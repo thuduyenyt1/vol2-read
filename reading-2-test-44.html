@@ -1,0 +1,2435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@600&display=swap" rel="stylesheet">
+    <title>IELTS Full Reading Practice - Test 4</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            background-color: #ffffff;
+            line-height: 1.4;
+            font-size: 16px;
+        }
+
+        .header {
+            background: linear-gradient(120deg, #e9eefb, #dfe7ff, #e9eefb);
+            background-size: 200% 200%;
+            animation: bannerFlow 8s ease-in-out infinite;
+            padding: 10px 20px;
+            border-bottom: 1px solid #d7def5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 60px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            flex: 1 1 auto;
+            justify-content: flex-start;
+        }
+        .header-ad {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            padding: 4px 10px;
+            border-radius: 14px;
+            border: 1px solid rgba(215, 222, 245, 0.9);
+            background: rgba(255, 255, 255, 0.24);
+            backdrop-filter: blur(4px);
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 10px 24px rgba(33, 58, 128, 0.12);
+            min-width: 180px;
+            max-width: calc(100% - 70px);
+            width: auto;
+            flex: 1 1 auto;
+            height: 48px;
+            overflow: hidden;
+        }
+        .ad-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .ad-eyebrow {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #6b7ac7;
+            margin: 0;
+            font-weight: 700;
+        }
+        .ad-marquee {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            align-items: center;
+            padding-left: 4px;
+        }
+        .ad-headline {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 800;
+            color: #1c2566;
+            white-space: nowrap;
+        }
+        .ad-loop {
+            display: flex;
+            gap: 40px;
+        }
+        .ad-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #cdd6f5;
+            background: rgba(255, 255, 255, 0.7);
+            color: #46507a;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            text-decoration: none;
+            font-weight: 800;
+            flex: 0 0 auto;
+            margin-left: 6px;
+            font-size: 16px;
+        }
+        .ad-close:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(70, 80, 122, 0.25);
+            background: #f6f8ff;
+        }
+        @keyframes bannerFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .main-container {
+            margin-top: 90px;
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            height: calc(100vh - 90px);
+        }
+
+        .panels-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .passage-panel {
+            flex: 1;
+            padding: 20px 20px 100px;
+            overflow-y: auto;
+            min-width: 200px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        .reading-passage h4 {
+            font-family: 'Merriweather', 'Times New Roman', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #2c3e50;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #4a90e2;
+            padding-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+       
+        .reading-passage p {
+            margin-bottom: 1.2em;
+        }
+
+        .questions-panel {
+            flex: 1;
+            padding: 20px 20px 100px;
+            overflow-y: auto;
+            min-width: 200px;
+            border-left: 1px solid #e0e0e0;
+        }
+
+        .resizer {
+            width: 10px;
+            cursor: col-resize;
+            background-color: #f0f0f0;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="30" viewBox="0 0 10 30"><path d="M4 11h2v2H4zM4 15h2v2H4zM4 19h2v2H4z" fill="%23888"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            flex-shrink: 0;
+            flex-grow: 0;
+        }
+
+        .nav-arrows {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            display: flex;
+            gap: 5px;
+            z-index: 101;
+        }
+
+        .nav-arrow {
+            width: 50px;
+            height: 50px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .nav-arrow:hover {
+            background: #555;
+        }
+
+        .nav-row {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            height: 80px;
+            z-index: 100;
+        }
+
+        .footer__questionWrapper___1tZ46 {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .footer__questionNo___3WNct {
+            background: none;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .footer__questionNo___3WNct:hover {
+            background-color: #f8f9fa;
+        }
+
+        .section-prefix {
+            font-size: 16px;
+        }
+
+        .sectionNr {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .attemptedCount {
+            font-size: 14px;
+            color: #666;
+            margin-left: 5px;
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            .attemptedCount {
+                display: none;
+            }
+        }
+
+        .footer__questionWrapper___1tZ46.selected .attemptedCount {
+            display: none;
+        }
+
+        .footer__subquestionWrapper___9GgoP {
+            display: none;
+            gap: 2px;
+            margin-left: 10px;
+        }
+
+        .footer__questionWrapper___1tZ46.selected .footer__subquestionWrapper___9GgoP {
+            display: flex;
+        }
+
+        .subQuestion {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ccc;
+            background: white;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            border-radius: 2px;
+        }
+
+        .subQuestion.answered {
+            background-color: #e9ecef;
+            border-color: #ddd;
+        }
+        .subQuestion.correct {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+        .subQuestion.incorrect {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .subQuestion.marked {
+            position: relative;
+            color: #333;
+        }
+
+        .subQuestion:hover {
+            background-color: #f0f0f0;
+            border-color: #999;
+        }
+
+        .subQuestion.active {
+            background-color: #4a90e2;
+            color: white;
+            border-color: #4a90e2;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .footer__deliverButton___3FM07 {
+            margin-left: auto;
+            margin-right: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s, border-color 0.2s;
+            min-width: 170px;
+            justify-content: center;
+        }
+
+        .footer__deliverButton___3FM07:hover {
+            background-color: #e0e0e0;
+            border-color: #bbb;
+        }
+
+        .footer__deliverButton___3FM07:disabled {
+            background: #e9ecef;
+            color: #6c757d;
+            cursor: not-allowed;
+            border-color: #ddd;
+        }
+
+        .fa-check::before {
+            content: "✓";
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .context-menu {
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+            min-width: 140px;
+            overflow: hidden;
+        }
+
+        .context-menu-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .context-menu-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .context-menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .color-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            padding: 0;
+            background-color: transparent;
+        }
+        
+        .color-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        
+        .color-btn.yellow { background-color: #fff3a3; }
+        .color-btn.green { background-color: #b4f0c1; }
+        .color-btn.pink { background-color: #ffc7df; }
+
+        .annotation-highlight {
+            background-color: var(--highlight-color, #fff3a3);
+            border-radius: 4px;
+            padding: 0 2px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        .annotation-highlight.highlight-yellow { --highlight-color: #fff3a3; }
+        .annotation-highlight.highlight-green { --highlight-color: #b4f0c1; }
+        .annotation-highlight.highlight-pink { --highlight-color: #ffc7df; }
+        .annotation-highlight.highlight-blue { --highlight-color: #d0ebff; border: 1px dashed #339af0; }
+
+        .annotation-note {
+            background-color: #b4f0c1;
+            border-radius: 4px;
+            padding: 0 2px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .annotation-note[data-note]:hover::after {
+            content: attr(data-note);
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
+            transform: translate(-50%, -6px);
+            background: #1f2937;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            font-size: 13px;
+            z-index: 2000;
+        }
+
+        .question {
+            margin-bottom: 40px;
+        }
+        .question p {
+            margin-bottom: 10px;
+        }
+        .question-prompt {
+            margin-bottom: 20px;
+        }
+        .question-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            margin: 6px 0 10px;
+            color: #000;
+        }
+        .answer-input {
+            border: 1px solid #888;
+            border-radius: 4px;
+            background-color: #fff;
+            padding: 2px 5px;
+            font-size: 16px;
+            text-align: center;
+            margin-right: 4px;
+            margin-left: 4px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            height: 28px;
+            width: 150px;
+            z-index: 10;
+            position: relative;
+            pointer-events: auto;
+        }
+        .answer-input.active-input {
+            border-color: #4a90e2;
+            box-shadow: 0 0 3px 1px rgba(74, 144, 226, 0.5);
+        }
+        .answer-input::placeholder {
+            color: #999;
+            font-weight: bold;
+            text-align: center;
+        }
+        .answer-input.correct {
+            border-color: #28a745;
+            background-color: #e9f7ef;
+        }
+        .answer-input.incorrect {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .part-header {
+            background-color: #f1f2ec;
+            padding: 10px 16px;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+            margin: 8px 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .timer-container {
+            display: flex;
+            position: relative;
+            cursor: default;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            align-items: center;
+            gap: 12px;
+            flex: 0 0 auto;
+            min-width: 220px;
+            padding: 4px 10px;
+            border-radius: 14px;
+            border: 1px solid #d7def5;
+            background: rgba(255, 255, 255, 0.24);
+            box-shadow: 0 8px 18px rgba(33, 58, 128, 0.08);
+        }
+
+        .timer-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 15px;
+        }
+
+        .timer-controls button {
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            padding: 0;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+        .timer-controls button:hover {
+            background: #e0e0e0;
+        }
+
+        .tf-question {
+            margin-bottom: 25px;
+            padding: 10px 0px;
+            border-radius: 4px;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+        .tf-question-line {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 5px 0px;
+            border-radius: 4px;
+        }
+        .tf-question-number, .question-number-box {
+            border: 2px solid #ccc;
+            padding: 2px 8px;
+            margin-right: 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: border-color 0.3s;
+            display: inline-block;
+        }
+        .tf-question-text {
+            padding-top: 3px;
+        }
+        .tf-options {
+            padding-left: 5px;
+        }
+        .tf-option {
+            display: block;
+            margin-bottom: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .tf-option input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .tf-question.correct .tf-question-line {
+            background-color: #e9f7ef;
+        }
+        .tf-question.incorrect .tf-question-line {
+            background-color: #f8d7da;
+        }
+        .multi-choice-question {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 3px solid transparent;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+        .multi-choice-option {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .multi-choice-option label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .multi-choice-option input[type="checkbox"],
+        .multi-choice-option input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+            accent-color: #4a90e2;
+        }
+        .multi-choice-option.correct {
+            background-color: #e9f7ef;
+        }
+        .multi-choice-option.incorrect {
+            background-color: #f8d7da;
+        }
+        .matching-form-container {
+            margin-top: 20px;
+        }
+        .matching-form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .matching-form-label {
+            width: auto;
+            flex: 1 1 320px;
+            margin-right: 8px;
+        }
+        .matching-form-row select.answer-input {
+            width: 220px;
+            flex-shrink: 0;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.hidden {
+            display: none;
+        }
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #888;
+        }
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .results-summary {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .results-details-container {
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .result-row {
+            display: grid;
+            grid-template-columns: 40px 1fr 1fr;
+            gap: 15px;
+            padding: 8px 5px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 15px;
+        }
+        .result-row.incorrect {
+            background-color: #f8d7da;
+        }
+        .result-row .q-num {
+            font-weight: bold;
+        }
+        .result-row .user-ans {
+            color: #555;
+        }
+        .result-row .correct-ans {
+            color: #155724;
+            font-weight: 500;
+        }
+        .correct-answer-display {
+            font-weight: bold;
+            color: #28a745;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+        .correct-answer-highlight {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            padding: 4px;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #launchScreen, #app {
+            width: 100vw;
+            height: 100vh;
+        }
+        #app {
+            display: none;
+        }
+        #launchScreen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background:
+                radial-gradient(circle at 0% 0%, rgba(206, 219, 255, 0.48), transparent 34%),
+                radial-gradient(circle at 100% 100%, rgba(221, 229, 255, 0.44), transparent 38%),
+                #f4f6fc;
+            color: #1f2b59;
+        }
+        .launch-card {
+            width: min(980px, 100%);
+            border: 1px solid #d7def5;
+            border-radius: 18px;
+            background: linear-gradient(180deg, #ffffff, #f7f9ff);
+            box-shadow: 0 16px 38px rgba(33, 58, 128, 0.14);
+            padding: 28px 30px 22px;
+            display: grid;
+            gap: 12px;
+        }
+        .launch-eyebrow {
+            margin: 0;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #6f7cb2;
+            font-weight: 700;
+        }
+        .launch-title {
+            margin: 4px 0 0;
+            font-size: clamp(26px, 3.5vw, 40px);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: #1c2566;
+        }
+        .launch-meta {
+            margin: 8px 0 0;
+            color: #3c4a81;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .launch-guide {
+            border: 1px solid #d7def5;
+            border-radius: 12px;
+            background: #f2f5ff;
+            padding: 14px;
+            display: grid;
+            gap: 6px;
+        }
+        .launch-main {
+            margin: 0;
+            font-size: clamp(18px, 2.2vw, 23px);
+            line-height: 1.32;
+            font-weight: 700;
+            color: #1d2a60;
+        }
+        .launch-sub {
+            margin: 0;
+            color: #4c598f;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+        .launch-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .launch-btn {
+            border: 1px solid #c5d0f2;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 11px 16px;
+            color: #24336e;
+            background: #ffffff;
+            transition: transform 0.12s ease;
+            box-shadow: 0 8px 20px rgba(35, 54, 110, 0.14);
+        }
+        .launch-btn:hover {
+            transform: translateY(-1px);
+            background: #f6f8ff;
+        }
+
+        .explanation-box {
+            display: none;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            background-color: #f0f7ff;
+            border-left: 4px solid #4a90e2;
+            border-radius: 4px;
+            font-size: 15px;
+            color: #2c3e50;
+            line-height: 1.5;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .explanation-box:hover {
+            background-color: #e2efff;
+        }
+        .explanation-box.show {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .explanation-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #1c2566;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .options-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 15px;
+        }
+        .options-list li {
+            margin-bottom: 5px;
+        }
+        .options-list-label {
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .example-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <section id="launchScreen" aria-label="Launch screen">
+        <div class="launch-card">
+            <div>
+                <p class="launch-eyebrow">IELTS Test Launcher</p>
+                <h1 class="launch-title" id="launchTestTitle">IELTS Reading Test 4</h1>
+                <p class="launch-meta">Dạng bài: Reading</p>
+            </div>
+            <div class="launch-guide">
+                <p class="launch-main">Nhấn F11 để bắt đầu làm bài ở chế độ toàn màn hình.</p>
+                <p class="launch-sub">Nhấn F11 lần nữa để thoát toàn màn hình nếu cần.</p>
+            </div>
+            <div class="launch-row">
+                <button id="startNormalBtn" class="launch-btn" type="button">Bắt đầu làm bài</button>
+            </div>
+        </div>
+    </section>
+    <div id="app">
+    <div class="header">
+        <div class="timer-container">
+            <span class="timer-display">60 minutes remaining</span>
+            <div class="timer-controls">
+                <button id="timer-toggle-btn" title="Pause/Resume Timer">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 5v14l11-7L8 5z"/></svg>
+                </button>
+                <button id="timer-reset-btn" title="Reset Timer">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="header-right">
+            <a href="https://www.facebook.com/englishresourcehub" target="_blank" rel="noopener" class="header-ad">
+                <div class="ad-copy">
+                    <p class="ad-eyebrow">Study boost</p>
+                    <div class="ad-marquee">
+                        <div class="ad-loop">
+                            <span class="ad-headline">Chinh phục IELTS dễ dàng - Tài liệu đầy đủ, chiến lược rõ ràng!</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <button class="ad-close" type="button" aria-label="Close ad" title="Close" onclick="window.open('https://www.facebook.com/englishresourcehub','_blank','noopener')">×</button>
+        </div>
+    </div>
+
+        <div class="main-container" id="main-container">
+            <div id="passage-header-container">
+                <div id="part-header-1" class="part-header">
+                    <p><strong>Part 1</strong></p>
+                    <p>Read the text and answer questions 1-13.</p>
+                </div>
+                <div id="part-header-2" class="part-header hidden">
+                    <p><strong>Part 2</strong></p>
+                    <p>Read the text and answer questions 14-26.</p>
+                </div>
+                <div id="part-header-3" class="part-header hidden">
+                    <p><strong>Part 3</strong></p>
+                    <p>Read the text and answer questions 27-40.</p>
+                </div>
+            </div>
+            <div class="panels-container">
+            <div class="passage-panel" id="passage-panel">
+                <div id="passage-text-1" class="reading-passage">
+                    <h4 class="text-center">Multiple intelligences</h4>
+                    <p><strong>The implications of multiple intelligence theory for teachers</strong></p>
+                    <p>The first intelligence test was developed in France by Alfred Binet early in the 20th century. By the 1920s and 1930, intelligence tests and their product, an individual's IQ (Intelligence Quotient), had become widely used in many societies around the world. Tests of this type, however, have now fallen into disrepute. All they test is linguistic and logical- mathematical intelligence and this traditional definition of intelligence is now regarded as too narrow. We now know that 75% of teachers are sequential, analytical presenters but 70% of students do not actually learn this way. A number of investigators now believe that the mind consists of several independent modules or intelligences. The educational psychologist most responsible for this change of attitude is Howard Gardner, professor of education at Harvard University in the United States and the creator of the Multiple intelligence theory.</p>
+                    <p>Multiple Intelligence theory, according to Gardner, is an endorsement of three key propositions: we are not all the same, we do not all have the same kinds of minds, and education works most effectively if these differences are taken into account, Gardner argues that there are at least eight kinds of intelligence that are important to fuller human development and that are available for almost everyone to develop. These intelligence are:</p>
+                    <ul>
+                        <li>Linguistic intelligence</li>
+                        <li>Logical-mathematical intelligence</li>
+                        <li>Musical intelligence</li>
+                        <li>Spatial intelligence</li>
+                        <li>Bodily-kinesthetic intelligence</li>
+                        <li>Interpersonal intelligence</li>
+                        <li>Intrapersonal intelligence</li>
+                        <li>Naturalist intelligence</li>
+                    </ul>
+                    <p>Gardner also speculates on the possibility of there being both a spiritual intelligence and an existential intelligence but comes to no definite conclusions.</p>
+                    <p>Following are some characteristics of the different intelligences, along with ways to exercise and develop them:</p>
+                    <p><strong>Linguistic intelligence:</strong><br>Involves reading, writing, speaking, and conversing in one's own or foreign languages. It may be exercised through reading interesting books, listening to recordings, using various kinds of computer technology, and actively participating in discussions.</p>
+                    <p><strong>Logical-mathematical intelligence:</strong><br>Involves number and computing skills, developing an awareness of patterns, and the ability to solve different kinds of problems through logic. It may be exercised through playing number and logic games, and solving various kinds of puzzles.</p>
+                    <p><strong>Musical intelligence:</strong><br>Involves understanding and expressing oneself through music and rhythmic movements or dance. It may be exercised through exposure to a variety of recordings, engaging in rhythmic activities, and singing, dancing, or playing various instruments.</p>
+                    <p><strong>Spatial intelligence:</strong><br>Involves the ability to create and manipulate mental images, and the orientation of the body in space. It may be developed through sharpening observation skills, solving mazes and other spatial tasks, and using imagery and active imagination.</p>
+                    <p><strong>Bodily- kinesthetic intelligence:</strong><br>Involves understanding how to communicate with and understand other people and how to work collaboratively. It may be exercised through cooperative games, group projects and discussions, and dramatic activities or role-playing.</p>
+                    <p><strong>Intrapersonal intelligence:</strong><br>Involves comprehending our emotions, and growing in the ability to control and work with them consciously. It may be exercised through participating in independent projects, journal-writing, and finding quiet places for reflection.</p>
+                    <p><strong>Naturalist Intelligence:</strong><br>Involves understanding nature and the world around us. It may be exercised through exploration of nature and organizing collections of items.</p>
+                    <p><strong>Applying Multiple Intelligence theory to the classroom</strong></p>
+                    <p>Gardner proposes that the eight intelligences he has identified are independent, in that they develop at different times and to different degrees in different individuals. They are, however, closely related, and many teachers and parents are finding that when an individual develops proficiency in one area, the whole constellation of intelligences may be enhanced.</p>
+                    <p>Gardner refers to intelligences as potentials that will or will not be activated, depending upon the values of a particular society, and the personal decisions made by individuals and / or their families. A student who believes that intelligence can be developed is likely to be persistent and adventurous. However, learner who thinks they have no control over their ability level is more likely to get upset when faced with failure, as it can only be constructed as evidence of inadequate ability. The fluid theory of intelligence advocated by Gardner encourages students to stretch themselves.</p>
+                    <p>Does the fact that we each have a unique profile mean that teachers should plan individual lessons for every student in the class to talk this into account? Clearly, this would be impractical and the solution lies in including classroom activities designed to appeal to each of the intelligence types.</p>
+                    <p>Gardner suggests that the challenge of the coming decades is to stop treating everyone in a uniform way. He proposes individually configured education-an education that takes individual differences seriously and creates practices that serve different kinds of minds equally well.</p>
+                </div>
+                <div id="passage-text-2" class="reading-passage hidden">
+                    <h4 class="text-center">A unique golden textile</h4>
+                    <p><strong>A two-man project to use spider silk is achieved after 4 years</strong></p>
+                    <p><strong>A</strong> A rare textile made from the silk of more than a million wild spiders has been on display at the American Museum of Natural History in New York City. To produce this golden cloth, 70 people spent four years collecting golden orb spiders from telephone poles in Madagascar, while another dozen workers carefully extracted about 80 feet of silk filament from each of the arachnids. The resulting 11-foot by 4-foot textile is the only large piece of cloth made from natural spider silk existing in the world today.</p>
+                    <p><strong>B</strong> Spider silk is very elastic and strong compared with steel or Kevlar, said textile expert Simon Peers, who co-led the project. Kevlar is a lightweight synthetic fabric which is chemically related to nylon. It is very tough and durable and used in bullet-proof vest. Kevlar is also resistant to wear, tear, and heat and has absolutely no melting point. But the tensile strength of spider silk is even greater than Kevlar's aramid filaments, and greater than that of high-grade steel. Most importantly, spider silk is extremely lightweight: a strand of spider silk long enough to circle the Earth would weigh less than 500 grams (18 oz). Spider silk is also especially ductile, able to stretch up to 140 per cent of its length without breaking. It can hold its strength below-40c. This gives it a very high toughness, which equals that of commercial fibers.</p>
+                    <p><strong>C</strong> Researchers have long been intrigued by the unique properties of spider silk. Unfortunately, spider silk is extremely hard to mass produce. Unlike silk worms, which are easy to raise in captivity, spiders have a habit of chomping off each other's heads when housed together. According to Peers, there's scientific research going on all over the world right now trying to replicate the tensile properties of spider silk a apply it to all sorts of areas in medicine and industry, but no one up until now has succeeded in replicating 100 per cent of the properties of natural spider silk.</p>
+                    <p><strong>D</strong> Peers came up with the idea of weaving spider silk after learning about the French missionary Jacob Paul Camboue, who worked with spiders in Madagascar during the 1880s and 1890s. Camboue built a small, hand-driven machine to extract silk from up to 24 spiders at once, without harming them. The spiders were temporarily restrainer their silk extracted, and then let go, Peers managed to build a replica of this 24-spider silking machine that was used at the turn of the century, said Nicholas Godley, who co- led the project with Peers. As an experiment, the pair collected an initial batch of about 20 spiders. When we stuck them in the machine and started turning it, lo and behold, this beautiful gold-colored silk started coming out’, Godley said.</p>
+                    <p><strong>E</strong> But to make a textile of any significant size, the silk experts had to drastically scale up their plan. Fourteen thousand spiders yield about an ounce of silk, Godley said, and the textile weighs about 2.6 pounds. The numbers are overwhelming. To get as much silk as they needed, Godley and Peers began hiring dozens of spider handlers to collect wild arachnids and carefully harness them to the silk-extraction machine. We had to find people who were willing to work with spiders, Godley said, because they bite' By the end of the project, Godley and Peers extracted silk from more than 1 million female golden orb spiders, which are abundant throughout Madagascar and known for the rich golden color of their silk, Because the spiders only produce silk during the rainy season, workers collected all the spiders between October and June. Then an additional 12 people used hand-powered machines to extract the silk and where it into 96-filament thread. Once the spiders had been silked, they were released back into the wild, where Godley said it takes them about a week to regenerate their skill. We can go back and re-silk the same spiders, he said. It's like the gift that never stops giving.</p>
+                    <p><strong>F</strong> Of course, spending four years to produce a single textile of spider silk isn't very practical for scientists trying to study the properties of spider silk, or companies that want to manufacture the fabric for the use as a biomedical product, or an alternative to Kevlar armor. Several groups have tried inserting spider genes into bacteria or even cows and goats to produce silk, but so far, the attempts have been only moderately successful. Part of the reason it's so hard to generate spider silk in the lab is that it starts out as a liquid protein that's produced by a special gland in the spider's abdomen. Using their spinneret, spiders apply force to rearrange the protein's molecular structure and transform it into solid silk.</p>
+                    <p>When we talk about a spider spinning silk, we're talking about how the spider applies forces to produce a transformation from liquid to solid, said spider silk expert Todd Blackledge of the University of Akron, Ohio, US, who was not involved in creating the textile. Scientists simply can't replicate the efficiency with which a spider produces silk. Every year we're getting closer and closer to being able to mass-produce it, but we're not there yet. For now, it seems we'll have to be content with one incredibly beautiful cloth, graciously provided by more than a million spiders.</p>
+                </div>
+                <div id="passage-text-3" class="reading-passage hidden">
+                    <h4 class="text-center">The power of persuasion</h4>
+                    <p><strong>A new Zealand restaurateur assesses some recent research from the USA</strong></p>
+                    <p>Some scientists peer at things through high-powered telescopes, others tempt rats through mazes, or mix bubbling fluids in glass beakers. Then there is Robert Cialdini, whose unorthodox research involves such mundane items as towels and chocolates. Nonetheless, Cialdini believes he is discovering important insights into how society works, because he is donducting research into why some people are more persuasive than others.</p>
+                    <p>Cialdini hopes that, by applying a little science, we should all be able to get our own way more often. This is in part a personal quest with its origins in his own experience: Cialdini claims that for his whole life he has been easy prey for salespeople and fundraisers who have managed to persuade him to buy things he did not want or give to charities he had never heard of his research methodology has certainly raised a few eyebrow. Having concluded that laboratory experiments on the psychology of persuasion were telling only a part of the story, Cialdini began to probe influence in the real world, enrolling in sales-training programmes. In this way, he believes he learned first hand a great deal about how to sell automobiles from a car lot, insurance from an office, and even encyclopaedias door to door. Most recently his research has involved the now famous experiments with towels. Many hotels leave a little card in each bathroom asking guests to reuse towels and thus conserve water and reduce pollution. Cialdini and his colleagues wanted to test the relative effectiveness of different text on those cards. Could hotels best motivate their guests to co-operate simply because it would help save the planet, or were other factors more compelling?</p>
+                    <p>To test this, the researchers redesigned the cards, replacing the environmental message with the simple (and truthful) statement that the majority of guests at the hotel had reused their towel at least once. Those guests who received this message were found to be 26% more likely to reuse their towel than those given the original message, and 74% more likely than those receiving no message at all.</p>
+                    <p>This was just one study that has enabled Cialdini to identify his Six Principles of Persuasion. The phenomenon revealed by the towel experiment he calls ”social proof”: the idea that our decisions are influenced by what other people like us are doing. More perniciously, social proof is the force underpinning some people's anxiety not to be left behind by their neighhours, thus the desire for a bigger house or a faster car. Afurther principle, which he names “reciprocity, was tested in a restaurant by measuring how patrons would respond to after-dinner chocolates. When the chocolates were dropped individually in front of each diner, tips went up 14%. This is reciprocity in action: we want to return favours done to us, often without bothering to accurately calculate whether what we are giving is proportionate to what we have received.</p>
+                    <p>Cialdini's research has established four more such principles. ‘Scarcity’ is the idea that people want more of things they can have less of, a notion that advertisers ruthlessly exploit-limit of four per customer”. Parents can also make use of scarcity by telling their little ones that this is a very unusual chance so they should seize it immediately. The principle of ’authority’ states that we trust people who know what they are talking about. Cialdini maintains that many professional don't display their credentials, fearing it is boastful or arrogant to publicise their expertise. The principle he labels ‘consistency’ suggests that we want to act in ways that are consistent with undertaking we have already made. For example, if you are soliciting charitable donations, first ask colleagues if they think they will sponsor you. Later, return with a sponsorship form to those who said yes and remind them of their earlier undertaking. The final principle is ‘likeness’: we are more easily persuaded by those who seem similar to ourselves. In one study, people were sent survey forms and asked to return them to a named researcher. When the researcher falsely indentified herself (e.g Cynthia Johnson is sent a survey by Cindy Johansen’), surveys were twice as likely to be completed.</p>
+                    <p>Many of Cialdini's claims about persuasion are just that- highly persuasive-and I can readily see evidence for some of them in my own workplace. But Cialdini's experiments were conducted in the United States and I wonder how well all of his findings can be applied here in New Zealand or elsewhere around the world. For instance, I do understand the general principle of ‘reciprocity’ but cannot imagine New Zealand waiting staff using his cynical chocolate trick in their restaurants because the culture of tipping in this country is so different, But it is true that the way to a diner's heart is to give them something they are not expecting in the way of service and in this country reciprocation would more likely take the form of a return visit to the restaurant and not a tip. It may be that age is also a factor and that different generations would react differently to say, the ‘consistency’ principle. I suspect that younger people in this country would respond quite positively to this sort of approach, where as their parents might be put off by any hint of a hard sell, Perhaps in the end we must accept that some of us are simply born with more persuasion skills than others and that we have less control over such matters than Cialdini might like to think.</p>
+                </div>
+            </div>
+            <div class="resizer" id="resizer"></div>
+            <div class="questions-panel" id="questions-panel">
+                <div id="questions-1" class="question-set">
+                    <div class="questions-container">
+                        <div class="question" data-q-start="1" data-q-end="4">
+                            <div class="question-prompt"><p><strong>Questions 1-4</strong></p><p>Do the following statements agree with the information given in Reading Passage 1?</p><p>In boxes 1-4 on your answer sheet, write</p><p><strong>TRUE</strong> if the statement agrees with the information</p><p><strong>FALSE</strong> if the statement contradicts the information</p><p><strong>NOT GIVEN</strong> if there is no information on this</p></div>
+                            <div class="tf-question" data-q-start="1" data-q-end="1">
+                                <div class="tf-question-line"><span class="tf-question-number">1</span><span class="tf-question-text">Intelligence tests became popular worldwide in the early 20th century.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q1" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q1" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q1" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="2" data-q-end="2">
+                                <div class="tf-question-line"><span class="tf-question-number">2</span><span class="tf-question-text">Traditional intelligence tests focused on assessing language and mathematical ability.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q2" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q2" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q2" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="3" data-q-end="3">
+                                <div class="tf-question-line"><span class="tf-question-number">3</span><span class="tf-question-text">New types of intelligence tests have now been developed to assess the potential of schoolchildren.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q3" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q3" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q3" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="4" data-q-end="4">
+                                <div class="tf-question-line"><span class="tf-question-number">4</span><span class="tf-question-text">Research has shown that the majority of students benefit when information is taught in a sequential manner.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q4" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q4" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q4" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                        </div>
+                        <div class="question" data-q-start="5" data-q-end="10">
+                            <div class="question-prompt">
+                                <p><strong>Questions 5-10</strong></p>
+                                <p>Complete the table below.</p>
+                                <p>Choose <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p>
+                            </div>
+                            <table style="width:100%; border-collapse: collapse;" border="1" cellpadding="5">
+                                <thead>
+                                    <tr>
+                                        <th>Intelligence type</th>
+                                        <th>Characteristics</th>
+                                        <th>Examples of ways to develop the intelligence</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Linguistic</td>
+                                        <td>Language ability</td>
+                                        <td>Taking part in <strong>5</strong> <input type="text" class="answer-input" id="q5" placeholder="5"><br>+ Reading</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Logical-mathematical</td>
+                                        <td>Numberacy / logic skills</td>
+                                        <td>+ Number games<br>Solving puzzles</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Musical</td>
+                                        <td>Expression through music and dance</td>
+                                        <td>Playing musical instruments<br>Performing<br>Listening to different <strong>6</strong> <input type="text" class="answer-input" id="q6" placeholder="6"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Spatial</td>
+                                        <td>Manipulation of mental images of objects in space</td>
+                                        <td>Tasks requiring imagination<br>+ Improving <strong>7</strong> <input type="text" class="answer-input" id="q7" placeholder="7"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bodily-kinesthetic</td>
+                                        <td>Physical skills</td>
+                                        <td>+ Working with <strong>8</strong> <input type="text" class="answer-input" id="q8" placeholder="8"><br>Playing sports</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Interpersonal</td>
+                                        <td>Communication skills</td>
+                                        <td>Group work<br>Drama</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Intrapersonal</td>
+                                        <td>Understanding and controlling <strong>9</strong> <input type="text" class="answer-input" id="q9" placeholder="9"></td>
+                                        <td>Working alone<br>+ Reflection</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Naturalist</td>
+                                        <td>Understanding nature</td>
+                                        <td>Exploration of nature<br>Organizing <strong>10</strong> <input type="text" class="answer-input" id="q10" placeholder="10"> of items</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="question" data-q-start="11" data-q-end="13">
+                            <div class="question-prompt">
+                                <p><strong>Questions 11-13</strong></p>
+                                <p>Complete the sentences below.</p>
+                                <p>Choose <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p>
+                            </div>
+                            <p><strong>11</strong> in the experience of teachers and parents, when <input type="text" class="answer-input" id="q11" placeholder="11"> in one intelligence is improved, other areas may also develop.</p>
+                            <p><strong>12</strong> if a learner feels their level of intelligence is fixed, they may not cope with <input type="text" class="answer-input" id="q12" placeholder="12"> as well as a learner who believes intelligences is flexible.</p>
+                            <p><strong>13</strong> Gardner believes that in the future educational programmes need to cater for the <input type="text" class="answer-input" id="q13" placeholder="13"> between students.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="questions-2" class="question-set hidden">
+                    <div class="questions-container">
+                        <div class="question" data-q-start="14" data-q-end="19">
+                            <div class="question-prompt">
+                                <p><strong>Questions 14-19</strong></p>
+                                <p>Reading passage <strong>2</strong> has six paragraphs A-F</p>
+                                <p>Choose the correct heading for each paragraph from the list of heading below.</p>
+                            </div>
+                            <div class="example-box" style="font-size: 15px;">
+                                <p><strong>List of Headings</strong></p>
+                                <ul class="options-list">
+                                    <li><span class="options-list-label">i</span> Experimenting with an old idea</li>
+                                    <li><span class="options-list-label">ii</span> Life cycle of Madeagascar spiders</li>
+                                    <li><span class="options-list-label">iii</span> Advances in the textile industry</li>
+                                    <li><span class="options-list-label">iv</span> Resources needed to meet the project's demands</li>
+                                    <li><span class="options-list-label">v</span> The physical properties of spider silk</li>
+                                    <li><span class="options-list-label">vi</span> A scientific analysis of spider silk</li>
+                                    <li><span class="options-list-label">vii</span> A unique work of art</li>
+                                    <li><span class="options-list-label">viii</span> Importance of the silk textile market</li>
+                                    <li><span class="options-list-label">ix</span> Difficulties of raising spiders in captivity</li>
+                                </ul>
+                            </div>
+                            <div class="matching-form-container">
+                                <div class="matching-form-row">
+                                    <label for="q14" class="matching-form-label"><strong>14</strong> Paragraph A</label>
+                                    <select class="answer-input" id="q14"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q15" class="matching-form-label"><strong>15</strong> Paragraph B</label>
+                                    <select class="answer-input" id="q15"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q16" class="matching-form-label"><strong>16</strong> Paragraph C</label>
+                                    <select class="answer-input" id="q16"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q17" class="matching-form-label"><strong>17</strong> Paragraph D</label>
+                                    <select class="answer-input" id="q17"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q18" class="matching-form-label"><strong>18</strong> Paragraph E</label>
+                                    <select class="answer-input" id="q18"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q19" class="matching-form-label"><strong>19</strong> Paragraph F</label>
+                                    <select class="answer-input" id="q19"><option value=""></option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question" data-q-start="20" data-q-end="23">
+                            <div class="question-prompt">
+                                <p><strong>Questions 20-23</strong></p>
+                                <p>Look at the following statements (Questions 20-23) and the list of researchers below.</p>
+                                <p>Match each statement with the correct researcher, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</p>
+                                <p>NB You may use any letter more than once</p>
+                            </div>
+                            <div class="example-box" style="font-size: 15px;">
+                                <p><strong>List of Researchers</strong></p>
+                                <ul class="options-list">
+                                    <li><span class="options-list-label">A</span> Simon Peers</li>
+                                    <li><span class="options-list-label">B</span> Nicholas Godley</li>
+                                    <li><span class="options-list-label">C</span> Todd Blackledge</li>
+                                </ul>
+                            </div>
+                            <div class="matching-form-container">
+                                <div class="matching-form-row">
+                                    <label for="q20" class="matching-form-label"><strong>20</strong> It takes a tremendous number of spiders to make a small amount of silk</label>
+                                    <select class="answer-input" id="q20"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q21" class="matching-form-label"><strong>21</strong> Scientists want to use the qualities of spider silk for medical purposes</label>
+                                    <select class="answer-input" id="q21"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q22" class="matching-form-label"><strong>22</strong> Scientists are making some progress in their efforts to manufacture spider silk</label>
+                                    <select class="answer-input" id="q22"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select>
+                                </div>
+                                <div class="matching-form-row">
+                                    <label for="q23" class="matching-form-label"><strong>23</strong> Spider silk compares favourably to materials known for their strength</label>
+                                    <select class="answer-input" id="q23"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question" data-q-start="24" data-q-end="26">
+                            <div class="question-prompt">
+                                <p><strong>Questions 24-26</strong></p>
+                                <p>Complete the summary below</p>
+                                <p>Choose <strong>ONE WORD ONLY</strong> from the passage for each answer</p>
+                                <p><strong>Producing spider silk in the lab</strong></p>
+                            </div>
+                            <p>Both scientists and manufacturers are interested in producing silk for many different purposes. Some researchers have tried to grow silk by introducing genetic material into <strong>24</strong> <input type="text" class="answer-input" id="q24" placeholder="24"> and some animals. But these experiments have been somewhat disappointing.</p>
+                            <p>It is difficult to make spider silk in a lab setting because the silk comes from a liquid protein made in a <strong>25</strong> <input type="text" class="answer-input" id="q25" placeholder="25"> inside the spiders body. When a spider spins silk, it causes a <strong>26</strong> <input type="text" class="answer-input" id="q26" placeholder="26"> that turns this liquid into solid silk. Scientists cannot replicate this yet.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="questions-3" class="question-set hidden">
+                    <div class="questions-container">
+                        <div class="question" data-q-start="27" data-q-end="31">
+                            <div class="question-prompt">
+                                <p><strong>Question 27-31</strong></p>
+                                <p>Choose the correct letter, <strong>A</strong>, <strong>B</strong>, <strong>C</strong> or <strong>D</strong></p>
+                            </div>
+                            <div class="multi-choice-question" data-q-start="27" data-q-end="27">
+                                <div class="multi-choice-options">
+                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="27">27</span><span class="mcq-question-title">What point is the writer making about Robert Cialdini in the first paragraph?</span></p>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q27" value="A"> A. He wants to change the way society operates.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q27" value="B"> B. He uses a wide variety of research techniques.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q27" value="C"> C. He has an unconventional approach to this work.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q27" value="D"> D. He refuses to make use of animals in his experiments.</label></div>
+                                </div>
+                            </div>
+                            <div class="multi-choice-question" data-q-start="28" data-q-end="28">
+                                <div class="multi-choice-options">
+                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="28">28</span><span class="mcq-question-title">What is the writer doing in the second paragraph?</span></p>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q28" value="A"> A. identifying a motivation for the research</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q28" value="B"> B. assessing on aspect of Cialdini's character</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q28" value="C"> C. questioning Cialdini's scientific research techniques</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q28" value="D"> D. applauding researchers who examine their own experience</label></div>
+                                </div>
+                            </div>
+                            <div class="multi-choice-question" data-q-start="29" data-q-end="29">
+                                <div class="multi-choice-options">
+                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="29">29</span><span class="mcq-question-title">What are we told about Cialdini's research methodology?</span></p>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q29" value="A"> A. it was conducted in a laboratory</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q29" value="B"> B. it involved him taking courses of study.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q29" value="C"> C. it was focused on one particular product.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q29" value="D"> D. it was based on interviews with salespeople</label></div>
+                                </div>
+                            </div>
+                            <div class="multi-choice-question" data-q-start="30" data-q-end="30">
+                                <div class="multi-choice-options">
+                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="30">30</span><span class="mcq-question-title">What was Cialdini's research question for the towel experiment?</span></p>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q30" value="A"> A. is it more effective not to use a card?</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q30" value="B"> B. Does the message make any difference?</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q30" value="C"> C. Why is the threat of pollution so persuasive ?</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q30" value="D"> D. Can hotels be persuaded to provide more towels?</label></div>
+                                </div>
+                            </div>
+                            <div class="multi-choice-question" data-q-start="31" data-q-end="31">
+                                <div class="multi-choice-options">
+                                    <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="31">31</span><span class="mcq-question-title">The results of the towel experiment suggest that guests</span></p>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q31" value="A"> A. were disinclined to tell the truth about towel use</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q31" value="B"> B. preferred not to receive a message with their towels</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q31" value="C"> C. were more receptive to messages about other guests.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q31" value="D"> D. responded more positively to an environmental message</label></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question" data-q-start="32" data-q-end="36">
+                            <div class="question-prompt">
+                                <p><strong>Questions 32-36</strong></p>
+                                <p>Complete the summary using the list of phrases, <strong>A-J</strong>, below.</p>
+                                <p><strong>The six principles of persuasion</strong></p>
+                            </div>
+                            <div class="example-box" style="font-size: 15px;">
+                                <ul class="options-list">
+                                    <li><span class="options-list-label">A</span> rare opportunity</li>
+                                    <li><span class="options-list-label">B</span> previous commitments</li>
+                                    <li><span class="options-list-label">C</span> generous response</li>
+                                    <li><span class="options-list-label">D</span> true qualification</li>
+                                    <li><span class="options-list-label">E</span> similar name</li>
+                                    <li><span class="options-list-label">F</span> ruthless exploitation</li>
+                                    <li><span class="options-list-label">G</span> social obligation</li>
+                                    <li><span class="options-list-label">H</span> relative value</li>
+                                    <li><span class="options-list-label">I</span> bad behavior</li>
+                                    <li><span class="options-list-label">J</span> small favor</li>
+                                </ul>
+                            </div>
+                            <p>Cialdini's towel experiment demonstrated the principle he named ‘social proof, which can result in competitive materialism. His research using chocolates suggests that people don't always assess the <strong>32</strong> <select class="answer-input" id="q32"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select> of transaction. A further principle recommends that advertisers and parents should claim that something is a <strong>33</strong> <select class="answer-input" id="q33"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select> in order to be more persuasive. The authority principle is often ignored when some professionals are concerned their actions might be considered <strong>34</strong> <select class="answer-input" id="q34"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select>. He similarly suggests that people will give more to charity if they can be reminded of <strong>35</strong> <select class="answer-input" id="q35"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select>. Lastly, even something like a <strong>36</strong> <select class="answer-input" id="q36"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select> has been shown to result in more surveys being completed.</p>
+                        </div>
+                        <div class="question" data-q-start="37" data-q-end="40">
+                            <div class="question-prompt"><p><strong>Questions 37-40</strong></p><p>Do the following statements agree with the views of the writer in Reading Passage 3?</p><p>In boxes 37-40 on your answer sheet, write</p><p><strong>YES</strong> if the statement agrees with the views of the writer</p><p><strong>NO</strong> if the statement contradicts the views of the writer</p><p><strong>NOT GIVEN</strong> if it is impossible to say what the writer thinks about this</p></div>
+                            <div class="tf-question" data-q-start="37" data-q-end="37">
+                                <div class="tf-question-line"><span class="tf-question-number">37</span><span class="tf-question-text">The writer sees evidence of the reciprocity principle in his own family</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q37" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q37" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q37" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="38" data-q-end="38">
+                                <div class="tf-question-line"><span class="tf-question-number">38</span><span class="tf-question-text">Persuasion may operate in different ways in different countries.</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q38" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q38" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q38" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="39" data-q-end="39">
+                                <div class="tf-question-line"><span class="tf-question-number">39</span><span class="tf-question-text">New Zealand diners are likely to leave tips if they are given chocolate</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q39" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q39" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q39" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                            <div class="tf-question" data-q-start="40" data-q-end="40">
+                                <div class="tf-question-line"><span class="tf-question-number">40</span><span class="tf-question-text">Older New Zealanders would be more attracted to consisitency</span></div>
+                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q40" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q40" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q40" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <div class="nav-arrows">
+        <button class="nav-arrow" onclick="previousQuestion()" id="prevBtn">‹</button>
+        <button class="nav-arrow" onclick="nextQuestion()" id="nextBtn">›</button>
+    </div>
+
+    <!-- FOOTER_NAV_START -->
+    <nav class="nav-row perScorableItem" aria-label="Questions">
+        <div class="footer__questionWrapper___1tZ46 multiple selected" role="tablist">
+            <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(1)">
+                <span>
+                    <span aria-hidden="true" class="section-prefix">Part </span>
+                    <span class="sectionNr" aria-hidden="true">1</span>
+                    <span class="attemptedCount" aria-hidden="true">0 of 13</span>
+                </span>
+            </button>
+            <div class="footer__subquestionWrapper___9GgoP">
+                <button class="subQuestion scorable-item" onclick="goToQuestion(1)"><span class="sr-only">Question 1</span><span aria-hidden="true">1</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(2)"><span class="sr-only">Question 2</span><span aria-hidden="true">2</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(3)"><span class="sr-only">Question 3</span><span aria-hidden="true">3</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(4)"><span class="sr-only">Question 4</span><span aria-hidden="true">4</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(5)"><span class="sr-only">Question 5</span><span aria-hidden="true">5</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(6)"><span class="sr-only">Question 6</span><span aria-hidden="true">6</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(7)"><span class="sr-only">Question 7</span><span aria-hidden="true">7</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(8)"><span class="sr-only">Question 8</span><span aria-hidden="true">8</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(9)"><span class="sr-only">Question 9</span><span aria-hidden="true">9</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(10)"><span class="sr-only">Question 10</span><span aria-hidden="true">10</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(11)"><span class="sr-only">Question 11</span><span aria-hidden="true">11</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(12)"><span class="sr-only">Question 12</span><span aria-hidden="true">12</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(13)"><span class="sr-only">Question 13</span><span aria-hidden="true">13</span></button>
+            </div>
+        </div>
+        <div class="footer__questionWrapper___1tZ46 multiple" role="tablist">
+            <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(2)">
+                <span>
+                    <span aria-hidden="true" class="section-prefix">Part </span>
+                    <span class="sectionNr" aria-hidden="true">2</span>
+                    <span class="attemptedCount" aria-hidden="true">0 of 13</span>
+                </span>
+            </button>
+            <div class="footer__subquestionWrapper___9GgoP">
+                <button class="subQuestion scorable-item" onclick="goToQuestion(14)"><span class="sr-only">Question 14</span><span aria-hidden="true">14</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(15)"><span class="sr-only">Question 15</span><span aria-hidden="true">15</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(16)"><span class="sr-only">Question 16</span><span aria-hidden="true">16</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(17)"><span class="sr-only">Question 17</span><span aria-hidden="true">17</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(18)"><span class="sr-only">Question 18</span><span aria-hidden="true">18</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(19)"><span class="sr-only">Question 19</span><span aria-hidden="true">19</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(20)"><span class="sr-only">Question 20</span><span aria-hidden="true">20</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(21)"><span class="sr-only">Question 21</span><span aria-hidden="true">21</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(22)"><span class="sr-only">Question 22</span><span aria-hidden="true">22</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(23)"><span class="sr-only">Question 23</span><span aria-hidden="true">23</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(24)"><span class="sr-only">Question 24</span><span aria-hidden="true">24</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(25)"><span class="sr-only">Question 25</span><span aria-hidden="true">25</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(26)"><span class="sr-only">Question 26</span><span aria-hidden="true">26</span></button>
+            </div>
+        </div>
+        <div class="footer__questionWrapper___1tZ46 multiple" role="tablist">
+            <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(3)">
+                <span>
+                    <span aria-hidden="true" class="section-prefix">Part </span>
+                    <span class="sectionNr" aria-hidden="true">3</span>
+                    <span class="attemptedCount" aria-hidden="true">0 of 14</span>
+                </span>
+            </button>
+            <div class="footer__subquestionWrapper___9GgoP">
+                <button class="subQuestion scorable-item" onclick="goToQuestion(27)"><span class="sr-only">Question 27</span><span aria-hidden="true">27</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(28)"><span class="sr-only">Question 28</span><span aria-hidden="true">28</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(29)"><span class="sr-only">Question 29</span><span aria-hidden="true">29</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(30)"><span class="sr-only">Question 30</span><span aria-hidden="true">30</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(31)"><span class="sr-only">Question 31</span><span aria-hidden="true">31</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(32)"><span class="sr-only">Question 32</span><span aria-hidden="true">32</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(33)"><span class="sr-only">Question 33</span><span aria-hidden="true">33</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(34)"><span class="sr-only">Question 34</span><span aria-hidden="true">34</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(35)"><span class="sr-only">Question 35</span><span aria-hidden="true">35</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(36)"><span class="sr-only">Question 36</span><span aria-hidden="true">36</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(37)"><span class="sr-only">Question 37</span><span aria-hidden="true">37</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(38)"><span class="sr-only">Question 38</span><span aria-hidden="true">38</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(39)"><span class="sr-only">Question 39</span><span aria-hidden="true">39</span></button>
+                <button class="subQuestion scorable-item" onclick="goToQuestion(40)"><span class="sr-only">Question 40</span><span aria-hidden="true">40</span></button>
+            </div>
+        </div>
+
+        <button id="deliver-button" aria-label="Review your answers" class="footer__deliverButton___3FM07">
+            <i class="fa fa fa-check" aria-hidden="true"></i>
+            <span>Check Answers</span>
+        </button>
+    </nav>
+    <!-- FOOTER_NAV_END -->
+
+    <!-- Context Menu - 3 màu trực tiếp -->
+    <div id="contextMenu" class="context-menu">
+        <div id="menu-note" class="context-menu-item" onclick="addNote()">
+            📝 Take note
+        </div>
+        <div id="menu-highlight-colors" class="context-menu-item" style="display: flex; gap: 15px; justify-content: center; padding: 12px 16px;">
+            <button type="button" class="color-btn yellow" onclick="highlightText('yellow')" title="Highlight Yellow"></button>
+            <button type="button" class="color-btn green" onclick="highlightText('green')" title="Highlight Green"></button>
+            <button type="button" class="color-btn pink" onclick="highlightText('pink')" title="Highlight Pink"></button>
+        </div>
+        <div id="menu-clear" class="context-menu-item" onclick="clearHighlight()">
+            🗑️️ Delete
+        </div>
+        <div id="menu-clear-all" class="context-menu-item" onclick="clearAllHighlights()">
+            🗑️ Delete all
+        </div>
+    </div>
+
+    <div id="results-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="closeResultsModal()">&times;</button>
+            <h2>Results</h2>
+            <div class="results-summary">
+                <p>Score: <span id="results-score"></span> / 40</p>
+                <p>IELTS Band: <span id="results-band"></span></p>
+            </div>
+            <div id="results-details" class="results-details-container">
+                <!-- Results for each question will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script>window.testMeta = {"totalQuestions":40,"parts":[{"part":1,"start":1,"end":13},{"part":2,"start":14,"end":26},{"part":3,"start":27,"end":40}],"correctAnswers":{"1":"TRUE","2":"TRUE","3":"NOT GIVEN","4":"FALSE","5":"discussions","6":"recordings","7":"observation skills","8":"other people","9":"our emotions","10":"collections","11":"proficiency","12":"failure","13":"individual differences","14":"vii","15":"v","16":"ix","17":"i","18":"iv","19":"vi","20":"B","21":"C","22":"C","23":"A","24":"bacteria","25":"gland","26":"force","27":"C","28":"A","29":"B","30":"B","31":"C","32":"H","33":"A","34":"I","35":"B","36":"E","37":"NOT GIVEN","38":"YES","39":"NO","40":"NO"}};</script>
+    
+    <script>
+    window.testExplanations = {
+        "1": 'Trích dẫn: "By the 1920s and 1930, intelligence tests and their product, an individual\'s IQ (Intelligence Quotient), had become widely used in many societies around the world. Tests of this type, however, have now fallen into disrepute."',
+        "2": 'Trích dẫn: "All they test is linguistic and logical- mathematical intelligence and this traditional definition of intelligence is now regarded as too narrow."',
+        "3": 'Trích dẫn: "A number of investigators now believe that the mind consists of several independent modules or intelligences. The educational psychologist most responsible for this change of attitude is Howard Gardner..."',
+        "4": 'Trích dẫn: "We now know that 75% of teachers are sequential, analytical presenters but 70% of students do not actually learn this way."',
+        "5": 'Trích dẫn: "It may be exercised through reading interesting books, listening to recordings, using various kinds of computer technology, and actively participating in discussions."',
+        "6": 'Trích dẫn: "It may be exercised through exposure to a variety of recordings, engaging in rhythmic activities, and singing, dancing, or playing various instruments."',
+        "7": 'Trích dẫn: "It may be developed through sharpening observation skills, solving mazes and other spatial tasks, and using imagery and active imagination."',
+        "8": 'Trích dẫn: "Involves understanding how to communicate with and understand other people and how to work collaboratively."',
+        "9": 'Trích dẫn: "Involves comprehending our emotions, and growing in the ability to control and work with them consciously."',
+        "10": 'Trích dẫn: "It may be exercised through exploration of nature and organizing collections of items."',
+        "11": 'Trích dẫn: "...many teachers and parents are finding that when an individual develops proficiency in one area, the whole constellation of intelligences may be enhanced."',
+        "12": 'Trích dẫn: "However, learner who thinks they have no control over their ability level is more likely to get upset when faced with failure, as it can only be constructed as evidence of inadequate ability."',
+        "13": 'Trích dẫn: "He proposes individually configured education-an education that takes individual differences seriously and creates practices that serve different kinds of minds equally well."',
+        "14": 'Trích dẫn: "The resulting 11-foot by 4-foot textile is the only large piece of cloth made from natural spider silk existing in the world today."',
+        "15": 'Trích dẫn: "Spider silk is also especially ductile, able to stretch up to 140 per cent of its length without breaking."',
+        "16": 'Trích dẫn: "Unlike silk worms, which are easy to raise in captivity, spiders have a habit of chomping off each other\'s heads when housed together."',
+        "17": 'Trích dẫn: "Peers came up with the idea of weaving spider silk after learning about the French missionary Jacob Paul Camboue, who worked with spiders in Madagascar during the 1880s and 1890s."',
+        "18": 'Trích dẫn: "Godley and Peers began hiring dozens of spider handlers to collect wild arachnids and carefully harness them to the silk-extraction machine."',
+        "19": 'Trích dẫn: "Several groups have tried inserting spider genes into bacteria or even cows and goats to produce silk, but so far, the attempts have been only moderately successful."',
+        "20": 'Trích dẫn: "Fourteen thousand spiders yield about an ounce of silk, Godley said, and the textile weighs about 2.6 pounds."',
+        "21": 'Trích dẫn: "scientists trying to study the properties of spider silk, or companies that want to manufacture the fabric for the use as a biomedical product... Todd Blackledge"',
+        "22": 'Trích dẫn: "Every year we\'re getting closer and closer to being able to mass-produce it, but we\'re not there yet. For now, it seems we\'ll have to be content with one incredibly beautiful cloth... said spider silk expert Todd Blackledge."',
+        "23": 'Trích dẫn: "Spider silk is very elastic and strong compared with steel or Kevlar, said textile expert Simon Peers, who co-led the project."',
+        "24": 'Trích dẫn: "Several groups have tried inserting spider genes into bacteria or even cows and goats to produce silk"',
+        "25": 'Trích dẫn: "Part of the reason it\'s so hard to generate spider silk in the lab is that it starts out as a liquid protein that\'s produced by a special gland in the spider\'s abdomen."',
+        "26": 'Trích dẫn: "Using their spinneret, spiders apply force to rearrange the protein\'s molecular structure and transform it into solid silk."',
+        "27": 'Trích dẫn: "Then there is Robert Cialdini, whose unorthodox research involves such mundane items as towels and chocolates."',
+        "28": 'Trích dẫn: "Cialdini hopes that, by applying a little science, we should all be able to get our own way more often."',
+        "29": 'Trích dẫn: "Cialdini began to probe influence in the real world, enrolling in sales-training programmes. In this way, he believes he learned first hand a great deal about how to sell automobiles..."',
+        "30": 'Trích dẫn: "Cialdini and his colleagues wanted to test the relative effectiveness of different text on those cards."',
+        "31": 'Trích dẫn: "Those guests who received this message were found to be 26% more likely to reuse their towel than those given the original message, and 74% more likely than those receiving no message at all."',
+        "32": 'Trích dẫn: "...calculate whether what we are giving is proportionate to what we have received."',
+        "33": 'Trích dẫn: "Parents can also make use of scarcity by telling their little ones that this is a very unusual chance so they should seize it immediately."',
+        "34": 'Trích dẫn: "...many professional don\'t display their credentials, fearing it is boastful or arrogant to publicise their expertise."',
+        "35": 'Trích dẫn: "...remind them of their earlier undertaking."',
+        "36": 'Trích dẫn: "...more easily persuaded by those who seem similar to ourselves. In one study... falsely indentified herself (e.g Cynthia Johnson is sent a survey by Cindy Johansen\'), surveys were twice as likely to be completed."',
+        "37": 'Trích dẫn: "Many of Cialdini\'s claims about persuasion are just that- highly persuasive-and I can readily see evidence for some of them in my own workplace." (Không đề cập đến gia đình, NOT GIVEN)',
+        "38": 'Trích dẫn: "I do understand the general principle of \'reciprocity \'but cannot imagine New Zealand waiting staff using his cynical chocolate trick in their restaurants because the culture of tipping in this country is so different,"',
+        "39": 'Trích dẫn: "...in this country reciprocation would more likely take the form of a return visit to the restaurant and not a tip."',
+        "40": 'Trích dẫn: "...I suspect that younger people in this country would respond quite positively to this sort of approach, where as their parents might be put off by any hint of a hard sell,"'
+    };
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const launchScreen = document.getElementById('launchScreen');
+        const app = document.getElementById('app');
+        const startNormalBtn = document.getElementById('startNormalBtn');
+        const launchTitle = document.getElementById('launchTestTitle');
+        if (launchTitle && document.title) {
+            launchTitle.textContent = document.title;
+        }
+        let examStarted = false;
+
+        const beginExam = () => {
+            if (examStarted) return;
+            examStarted = true;
+            if (launchScreen) launchScreen.style.display = 'none';
+            if (app) app.style.display = 'block';
+            initialize();
+        };
+
+        if (startNormalBtn) {
+            startNormalBtn.addEventListener('click', beginExam);
+        }
+        
+        const testMeta = window.testMeta || { totalQuestions: 40, parts: [], correctAnswers: {} };
+        const partRanges = testMeta.parts || [];
+        const correctAnswers = testMeta.correctAnswers || {};
+        const totalQuestions = testMeta.totalQuestions || Object.keys(correctAnswers).length;
+
+        let currentPassage = partRanges[0]?.part || 1;
+        let currentQuestion = partRanges[0]?.start || 1;
+        let pendingSelectionRange = null;
+        let activeAnnotationTarget = null;
+        let timeInSeconds = 3600;
+        let timerInterval;
+        let hasSubmitted = false;
+        let activeQuestionElement = null;
+        const markedQuestions = new Set();
+        const markButtons = new Map();
+        const COUNTDOWN_THRESHOLD = 300;
+
+        const timerDisplay = document.querySelector('.timer-display');
+        const timerToggleButton = document.getElementById('timer-toggle-btn');
+        const timerResetButton = document.getElementById('timer-reset-btn');
+        const deliverButton = document.getElementById('deliver-button');
+        const resizer = document.getElementById('resizer');
+        const passagePanel = document.getElementById('passage-panel');
+        const questionsPanel = document.getElementById('questions-panel');
+        const contextMenu = document.getElementById('contextMenu');
+        const menuHighlightColors = document.getElementById('menu-highlight-colors');
+        const menuNote = document.getElementById('menu-note');
+        const menuClear = document.getElementById('menu-clear');
+        const menuClearAll = document.getElementById('menu-clear-all');
+
+        const playIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 5v14l11-7L8 5z"/></svg>';
+        const pauseIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+        const bookmarkIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16l-6-4-6 4z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path></svg>';
+
+        function initialize() {
+            startTimer();
+            const firstPart = partRanges[0]?.part || 1;
+            switchToPart(firstPart);
+            
+            document.body.addEventListener('input', updateAllIndicators);
+            document.body.addEventListener('change', updateAllIndicators);
+            deliverButton.addEventListener('click', checkAnswers);
+            timerToggleButton.addEventListener('click', toggleTimer);
+            timerResetButton.addEventListener('click', resetTimer);
+
+            document.querySelectorAll('[data-q-start]').forEach(el => {
+                el.addEventListener('click', (ev) => {
+                    if (ev.target.closest('input, select, label, .tf-options, .multi-choice-option, .matching-form-row')) {
+                        return;
+                    }
+                    const qNum = parseInt(el.dataset.qStart, 10);
+                    if (currentQuestion !== qNum) {
+                        goToQuestion(qNum);
+                    }
+                });
+            });
+
+            resizer.addEventListener('mousedown', initResize, false);
+            initializeContextMenu();
+            initializeQuestionMarkers();
+        }
+
+        function highlightEvidenceInPassage(explanationText) {
+            let targetPhrase = "";
+            const match = explanationText.match(/"([^"]+)"/);
+            if (match) {
+                targetPhrase = match[1].trim();
+            } else {
+                targetPhrase = explanationText.replace(/^.*?Trích dẫn:\s*/i, "").trim();
+            }
+            if (!targetPhrase) return;
+
+            let cleanQuery = targetPhrase.replace(/^\.\.\./, "").replace(/\.\.\.$/, "").trim();
+            if (!cleanQuery) return;
+
+            const currentPassageEl = passagePanel.querySelector('.reading-passage:not(.hidden)');
+            if (!currentPassageEl) return;
+            
+            // Xóa highlight cũ
+            currentPassageEl.querySelectorAll('.annotation-highlight.highlight-blue').forEach(el => {
+                const parent = el.parentNode;
+                while (el.firstChild) parent.insertBefore(el.firstChild, el);
+                parent.removeChild(el);
+            });
+
+            const walker = document.createTreeWalker(currentPassageEl, NodeFilter.SHOW_TEXT, null, false);
+            let node;
+            let found = false;
+
+            while (node = walker.nextNode()) {
+                const text = node.nodeValue;
+                const index = text.indexOf(cleanQuery);
+                if (index !== -1) {
+                    const range = document.createRange();
+                    range.setStart(node, index);
+                    range.setEnd(node, index + cleanQuery.length);
+                    
+                    const span = document.createElement('span');
+                    span.className = 'annotation annotation-highlight highlight-blue';
+                    span.dataset.type = 'highlight';
+                    span.dataset.color = 'blue';
+                    
+                    try {
+                        range.surroundContents(span);
+                        span.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        found = true;
+                    } catch (e) {}
+                    break;
+                }
+            }
+
+            if (!found) {
+                const words = cleanQuery.split(/\s+/).filter(w => w.length > 4);
+                if (words.length > 0) {
+                    const keyword = words[0];
+                    walker.currentNode = currentPassageEl;
+                    while (node = walker.nextNode()) {
+                        const text = node.nodeValue;
+                        const index = text.indexOf(keyword);
+                        if (index !== -1) {
+                            const range = document.createRange();
+                            range.setStart(node, index);
+                            range.setEnd(node, Math.min(index + cleanQuery.length, text.length));
+                            
+                            const span = document.createElement('span');
+                            span.className = 'annotation annotation-highlight highlight-blue';
+                            span.dataset.type = 'highlight';
+                            span.dataset.color = 'blue';
+                            
+                            try {
+                                range.surroundContents(span);
+                                span.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            } catch (e) {}
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        function checkAnswers() {
+            if (hasSubmitted) return;
+            hasSubmitted = true;
+            const allInputs = document.querySelectorAll('input, select, textarea');
+            allInputs.forEach(input => { input.disabled = true; });
+
+            deliverButton.disabled = true;
+            deliverButton.style.cursor = 'not-allowed';
+            
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerToggleButton.innerHTML = playIcon;
+            let score = 0;
+            const resultsDetailsContainer = document.getElementById('results-details');
+            resultsDetailsContainer.innerHTML = '';
+
+            document.querySelectorAll('.correct, .incorrect, .correct-answer-highlight').forEach(el => {
+                el.classList.remove('correct', 'incorrect', 'correct-answer-highlight');
+            });
+            document.querySelectorAll('.correct-answer-display').forEach(el => el.remove());
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionKey = String(i);
+                const correctAnswer = correctAnswers[questionKey];
+                let userAnswer = '';
+                let isCorrect = false;
+                let userAnswerDisplay = 'Not Answered';
+                const correctAnswerText = Array.isArray(correctAnswer) ? correctAnswer.join(' / ') : correctAnswer;
+
+                const textInput = document.getElementById(`q${i}`);
+                const radioGroup = document.querySelectorAll(`input[name="q${i}"][type="radio"]`);
+                const selectInput = document.getElementById(`q${i}`);
+                
+                if (textInput && textInput.tagName === 'INPUT' && textInput.type === 'text') {
+                    const element = textInput.closest('.matching-form-row') || textInput;
+                    userAnswer = textInput.value.trim();
+                    userAnswerDisplay = userAnswer || 'Not Answered';
+
+                    isCorrect = Array.isArray(correctAnswer) ?
+                        correctAnswer.some(ans => userAnswer.toLowerCase() === ans.toLowerCase()) :
+                        userAnswer.toLowerCase() === correctAnswer.toLowerCase();
+                    
+                    if (isCorrect) {
+                        score++;
+                        element.classList.add('correct');
+                    } else {
+                        element.classList.add('incorrect');
+                        const correctAnswerSpan = document.createElement('span');
+                        correctAnswerSpan.className = 'correct-answer-display';
+                        correctAnswerSpan.innerHTML = `&nbsp;➜&nbsp;<span class="correct-answer-highlight">${correctAnswerText}</span>`;
+                        textInput.parentNode.insertBefore(correctAnswerSpan, textInput.nextSibling);
+                    }
+                }
+                else if (selectInput && selectInput.tagName === 'SELECT') {
+                    const element = selectInput.closest('.matching-form-row') || selectInput;
+                    userAnswer = selectInput.value;
+                    userAnswerDisplay = userAnswer || 'Not Answered';
+
+                    isCorrect = userAnswer === correctAnswer;
+                    
+                    if (isCorrect) {
+                        score++;
+                        element.classList.add('correct');
+                    } else {
+                        element.classList.add('incorrect');
+                        const correctAnswerSpan = document.createElement('span');
+                        correctAnswerSpan.className = 'correct-answer-display';
+                        correctAnswerSpan.innerHTML = `&nbsp;➜&nbsp;<span class="correct-answer-highlight">${correctAnswerText}</span>`;
+                        selectInput.parentNode.insertBefore(correctAnswerSpan, selectInput.nextSibling);
+                    }
+                }
+                else if (radioGroup.length > 0) {
+                    const questionContainer = radioGroup[0].closest('.tf-question') || radioGroup[0].closest('.multi-choice-question');
+                    const checkedRadio = document.querySelector(`input[name="q${i}"]:checked`);
+
+                    if (checkedRadio) {
+                        userAnswer = checkedRadio.value;
+                        userAnswerDisplay = userAnswer;
+                        isCorrect = userAnswer === correctAnswer;
+
+                        const userLabel = checkedRadio.closest('.tf-option, .multi-choice-option');
+                        if (userLabel) {
+                            userLabel.classList.add(isCorrect ? 'correct' : 'incorrect');
+                        }
+                    }
+
+                    if (isCorrect) {
+                        score++;
+                    } else {
+                        if (questionContainer){
+                            const correctOptionEl = questionContainer.querySelector(`input[value="${correctAnswerText}"]`);
+                            if (correctOptionEl) {
+                                const correctLabel = correctOptionEl.closest('.tf-option, .multi-choice-option');
+                                if (correctLabel) {
+                                    correctLabel.classList.add('correct-answer-highlight');
+                                }
+                            }
+                        }
+                    }
+                }
+                   
+                const resultRow = `
+                    <div class="result-row ${isCorrect ? '' : 'incorrect'}">
+                        <span class="q-num">${i}</span>
+                        <span class="user-ans">${userAnswerDisplay}</span>
+                        <span class="correct-ans">${correctAnswerText}</span>
+                    </div>`;
+                resultsDetailsContainer.innerHTML += resultRow;
+                
+                const navButton = document.querySelector(`.subQuestion[onclick="goToQuestion(${i})"]`);
+                if (navButton) {
+                    navButton.classList.remove('answered', 'active');
+                    navButton.classList.add(isCorrect ? 'correct' : 'incorrect');
+                }
+
+                if (window.testExplanations && window.testExplanations[i]) {
+                    let container = null;
+                    if (textInput && textInput.tagName === 'INPUT' && textInput.type === 'text') {
+                        container = textInput.closest('td') || textInput.closest('li') || textInput.closest('p') || textInput.closest('.matching-form-row');
+                    } else if (selectInput && selectInput.tagName === 'SELECT') {
+                        container = selectInput.closest('.matching-form-row');
+                    } else if (radioGroup.length > 0) {
+                        container = radioGroup[0].closest('.tf-question') || radioGroup[0].closest('.multi-choice-question');
+                    }
+                    
+                    if (container) {
+                        let expElement = document.createElement('div');
+                        expElement.className = 'explanation-box show';
+                        expElement.dataset.forQ = i;
+                        expElement.innerHTML = `<div class="explanation-title">💡 Giải thích câu ${i} (Bấm vào đây để xem evidence):</div><div>${window.testExplanations[i]}</div>`;
+                        
+                        expElement.title = 'Bấm để highlight evidence trong bài đọc';
+                        expElement.addEventListener('click', () => {
+                            highlightEvidenceInPassage(window.testExplanations[i]);
+                        });
+
+                        const checkContainer = container.classList.contains('matching-form-row') || container.tagName === 'P' ? container.parentNode : container;
+                        if (!checkContainer.querySelector(`.explanation-box[data-for-q="${i}"]`)) {
+                            checkContainer.appendChild(expElement);
+                        }
+                    }
+                }
+            }
+
+            document.getElementById('results-score').textContent = score;
+            document.getElementById('results-band').textContent = calculateBandScore(score);
+            document.getElementById('results-modal').classList.remove('hidden');
+        }
+
+        function calculateBandScore(score) {
+            if (score >= 39) return '9.0';
+            const mapping = {
+                40: 9.0, 39: 9.0, 38: 8.5, 37: 8.5, 36: 8.0, 35: 8.0, 34: 7.5,
+                33: 7.5, 32: 7.0, 31: 7.0, 30: 7.0, 29: 6.5, 28: 6.5, 27: 6.5,
+                26: 6.0, 25: 6.0, 24: 6.0, 23: 5.5, 22: 5.5, 21: 5.5, 20: 5.5,
+                19: 5.0, 18: 5.0, 17: 5.0, 16: 5.0, 15: 5.0, 14: 4.5, 13: 4.5,
+                12: 4.0, 11: 4.0, 10: 4.0, 9: 3.5, 8: 3.5, 7: 3.0, 6: 3.0,
+                5: 2.5, 4: 2.5
+            };
+            if (score <= 0) return 0.0;
+            if (score === 1) return 1.0;
+            if (score <= 3) return 2.0;
+            if (score <= 5) return 2.5;
+            return mapping[score] || 0.0;
+        }
+
+        window.closeResultsModal = function() {
+            document.getElementById('results-modal').classList.add('hidden');
+        }
+
+        const getFirstQuestionOfPart = (partNumber) => {
+            const match = partRanges.find(p => p.part === partNumber);
+            return match ? match.start : 1;
+        };
+
+        const getPartForQuestion = (questionNumber) => {
+            const match = partRanges.find(p => questionNumber >= p.start && questionNumber <= p.end);
+            return match ? match.part : partRanges[0]?.part || 1;
+        };
+
+        function switchToPart(partNumber) {
+            currentPassage = partNumber;
+            document.querySelectorAll('.reading-passage, .question-set, .part-header').forEach(el => {
+                el.classList.add('hidden');
+            });
+            document.getElementById(`passage-text-${partNumber}`).classList.remove('hidden');
+            document.getElementById(`questions-${partNumber}`).classList.remove('hidden');
+            document.getElementById(`part-header-${partNumber}`).classList.remove('hidden');
+
+            document.querySelectorAll('.footer__questionWrapper___1tZ46').forEach((wrapper, index) => {
+                wrapper.classList.toggle('selected', (index + 1) === partNumber);
+            });
+            goToQuestion(getFirstQuestionOfPart(partNumber));
+        }
+        
+        function goToQuestion(questionNumber) {
+            currentQuestion = questionNumber;
+            const passageNumber = getPartForQuestion(questionNumber);
+            if (currentPassage !== passageNumber) {
+                switchToPart(passageNumber);
+                return; 
+            }
+            if (activeQuestionElement) {
+                activeQuestionElement.classList.remove('active-question', 'active-input');
+            }
+            let targetEl = document.querySelector(`[data-q-start="${questionNumber}"]`);
+            if (targetEl) {
+                activeQuestionElement = targetEl;
+                 if (targetEl.matches('input[type="text"]') || targetEl.matches('select')) {
+                     targetEl.classList.add('active-input');
+                 } else {
+                     targetEl.classList.add('active-question');
+                 }
+                 scrollIntoViewIfNeeded(targetEl);
+            } else {
+                 const pMatch = document.querySelector(`.matching-form-row select[id="q${questionNumber}"]`);
+                 if(pMatch) {
+                    activeQuestionElement = pMatch;
+                    pMatch.classList.add('active-input');
+                    scrollIntoViewIfNeeded(pMatch);
+                 }
+            }
+            updateNavigation();
+        }
+
+        function updateNavigation() {
+            const navButtons = document.querySelectorAll('.subQuestion');
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            
+            const activeNav = Array.from(navButtons).find(btn => {
+                const hiddenSpan = btn.querySelector('[aria-hidden="true"]');
+                const qNum = parseInt(hiddenSpan ? hiddenSpan.textContent : btn.textContent.replace(/\D/g, ''), 10);
+                return qNum === currentQuestion;
+            });
+            if (activeNav) {
+                activeNav.classList.add('active');
+            }
+
+            const inputs = document.querySelectorAll('.answer-input');
+            inputs.forEach(input => input.classList.remove('active-input'));
+            
+            const activeInput = document.getElementById(`q${currentQuestion}`);
+            if (activeInput) {
+                activeInput.classList.add('active-input');
+                if (typeof activeInput.focus === 'function') {
+                    activeInput.focus();
+                }
+            }
+        }
+        
+        window.nextQuestion = () => currentQuestion < totalQuestions && goToQuestion(currentQuestion + 1);
+        window.previousQuestion = () => currentQuestion > 1 && goToQuestion(currentQuestion - 1);
+
+        function updateAllIndicators() {
+            partRanges.forEach(range => updateAttemptedCount(range.part, range.start, range.end));
+            updateAnsweredNav();
+        }
+        
+        function updateAnsweredNav() {
+            const navButtons = document.querySelectorAll('.subQuestion');
+            navButtons.forEach(btn => {
+                const hiddenSpan = btn.querySelector('[aria-hidden="true"]');
+                const qNum = parseInt(hiddenSpan ? hiddenSpan.textContent : btn.textContent.replace(/\D/g, ''), 10);
+                if (!isNaN(qNum) && isQuestionAnswered(qNum)) {
+                    btn.classList.add('answered');
+                } else {
+                    btn.classList.remove('answered');
+                }
+            });
+        }
+        
+        function isQuestionAnswered(qNum) {
+            const textInput = document.getElementById(`q${qNum}`);
+            if (textInput && typeof textInput.value === 'string' && textInput.value.trim() !== '') return true;
+            const radio = document.querySelector(`input[name="q${qNum}"]:checked`);
+            if (radio) return true;
+            const select = document.getElementById(`q${qNum}`);
+            if (select && select.tagName === 'SELECT' && select.value !== '') return true;
+            return false;
+        }
+
+        function scrollIntoViewIfNeeded(element) {
+            const panel = element.closest('.questions-panel, .passage-panel');
+            const panelRect = panel.getBoundingClientRect();
+            const elementRect = element.getBoundingClientRect();
+            if (elementRect.top < panelRect.top || elementRect.bottom > panelRect.bottom) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        function updateTimerDisplay() {
+            const displaySeconds = Math.max(timeInSeconds, 0);
+            if (displaySeconds > COUNTDOWN_THRESHOLD) {
+                const minutesRemaining = Math.ceil(displaySeconds / 60);
+                timerDisplay.textContent = `${minutesRemaining} minutes remaining`;
+            } else {
+                const minutes = Math.floor(displaySeconds / 60);
+                const seconds = displaySeconds % 60;
+                timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }
+
+        function handleTimeExpired() {
+            timeInSeconds = 0;
+            updateTimerDisplay();
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerToggleButton.innerHTML = playIcon;
+            checkAnswers();
+        }
+
+        function startTimer() {
+            if (hasSubmitted) return;
+            if (timerInterval) clearInterval(timerInterval);
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                timeInSeconds = Math.max(timeInSeconds - 1, 0);
+                updateTimerDisplay();
+                if (timeInSeconds <= 0) {
+                    handleTimeExpired();
+                }
+            }, 1000);
+            timerToggleButton.innerHTML = pauseIcon;
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            timerToggleButton.innerHTML = playIcon;
+        }
+
+        function toggleTimer() {
+            if (timerInterval) {
+                pauseTimer();
+            } else {
+                startTimer();
+            }
+        }
+
+        function resetTimer() {
+            timeInSeconds = 3600;
+            updateTimerDisplay();
+            startTimer();
+        }
+        
+        function initResize(e) {
+            e.preventDefault();
+            const startX = e.clientX;
+            const startWidth = passagePanel.offsetWidth;
+            
+            const doDrag = (e) => {
+                const newWidth = startWidth + e.clientX - startX;
+                if (newWidth > 200 && (document.body.clientWidth - newWidth - resizer.offsetWidth) > 200) {
+                    passagePanel.style.flex = `0 0 ${newWidth}px`;
+                }
+            };
+            const stopDrag = () => {
+                window.removeEventListener('mousemove', doDrag, false);
+                window.removeEventListener('mouseup', stopDrag, false);
+            };
+            
+            window.addEventListener('mousemove', doDrag, false);
+            window.addEventListener('mouseup', stopDrag, false);
+        }
+        
+        const ANNOTATION_CLASSES = {
+            highlight: 'annotation-highlight',
+            note: 'annotation-note'
+        };
+
+        function unwrapElement(element) {
+            const parent = element?.parentNode;
+            if (!parent) return;
+            while (element.firstChild) {
+                parent.insertBefore(element.firstChild, element);
+            }
+            parent.removeChild(element);
+        }
+
+        function selectionWithinPanels(selection) {
+            const anchor = selection.anchorNode;
+            const focus = selection.focusNode;
+            const inPanels = node => node && (passagePanel.contains(node) || questionsPanel.contains(node));
+            return inPanels(anchor) && inPanels(focus);
+        }
+
+        function isRangeInsidePanels(range) {
+            const root = range.commonAncestorContainer;
+            return passagePanel.contains(root) || questionsPanel.contains(root);
+        }
+
+        function getCurrentSelectionRange() {
+            const selection = window.getSelection();
+            if (!selection || selection.rangeCount === 0 || selection.isCollapsed) return null;
+            return selection.getRangeAt(0).cloneRange();
+        }
+
+        function positionContextMenu(x, y) {
+            contextMenu.style.display = 'block';
+            const menuHeight = contextMenu.offsetHeight;
+            const menuWidth = contextMenu.offsetWidth;
+            let left = x;
+            let top = y - menuHeight - 8;
+            if (left + menuWidth > window.innerWidth) left = window.innerWidth - menuWidth - 8;
+            if (left < 8) left = 8;
+            if (top < 8) top = y + 8;
+            contextMenu.style.left = `${left}px`;
+            contextMenu.style.top = `${top}px`;
+        }
+
+        function resetSelectionState() {
+            pendingSelectionRange = null;
+            activeAnnotationTarget = null;
+        }
+
+        function showMenuForSelection(event) {
+            menuHighlightColors.style.display = 'flex';
+            menuNote.style.display = 'flex';
+            menuClear.style.display = 'none';
+            menuClearAll.style.display = 'none';
+            contextMenu.dataset.mode = 'create';
+            positionContextMenu(event.pageX, event.pageY);
+        }
+
+        function showMenuForAnnotation(event, target) {
+            activeAnnotationTarget = target;
+            pendingSelectionRange = null;
+            window.getSelection().removeAllRanges();
+            menuHighlightColors.style.display = 'none';
+            menuNote.style.display = 'none';
+            menuClear.style.display = 'flex';
+            menuClearAll.style.display = 'flex';
+            contextMenu.dataset.mode = 'manage';
+            positionContextMenu(event.pageX, event.pageY);
+        }
+
+        function closeContextMenu(resetSelection = false) {
+            contextMenu.style.display = 'none';
+            contextMenu.dataset.mode = '';
+            if (resetSelection) {
+                window.getSelection().removeAllRanges();
+            }
+            resetSelectionState();
+        }
+
+        function expandRangeToAnnotations(range, selector) {
+            const spans = Array.from(document.querySelectorAll(selector));
+            spans.forEach(span => {
+                if (!range.intersectsNode(span)) return;
+                const spanRange = document.createRange();
+                spanRange.selectNode(span);
+                if (range.compareBoundaryPoints(Range.START_TO_START, spanRange) > 0) {
+                    range.setStartBefore(span);
+                }
+                if (range.compareBoundaryPoints(Range.END_TO_END, spanRange) < 0) {
+                    range.setEndAfter(span);
+                }
+            });
+        }
+
+        function unwrapAnnotationsInRange(range, type) {
+            const selector = type === 'highlight'
+                ? `.${ANNOTATION_CLASSES.highlight}`
+                : `.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`;
+            document.querySelectorAll(selector).forEach(span => {
+                if (range.intersectsNode(span)) {
+                    unwrapElement(span);
+                }
+            });
+        }
+
+        function getTextNodesInRange(range, type) {
+            const nodes = [];
+            const shouldInclude = (node) => {
+                if (!node || !node.nodeValue || !node.nodeValue.trim()) return false;
+                if (!range.intersectsNode(node)) return false;
+                if (type === 'highlight' && node.parentElement?.closest(`.${ANNOTATION_CLASSES.note}`)) {
+                    return false;
+                }
+                return true;
+            };
+
+            if (range.commonAncestorContainer.nodeType === Node.TEXT_NODE) {
+                if (shouldInclude(range.commonAncestorContainer)) {
+                    nodes.push(range.commonAncestorContainer);
+                }
+                return nodes;
+            }
+
+            const walker = document.createTreeWalker(
+                range.commonAncestorContainer,
+                NodeFilter.SHOW_TEXT,
+                {
+                    acceptNode: (node) => shouldInclude(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
+                }
+            );
+
+            while (walker.nextNode()) {
+                nodes.push(walker.currentNode);
+            }
+            return nodes;
+        }
+
+        function wrapTextPortion(node, range, type, noteText = '', highlightColor = 'yellow') {
+            let startOffset = 0;
+            let endOffset = node.nodeValue.length;
+
+            if (node === range.startContainer && range.startOffset > startOffset) {
+                startOffset = range.startOffset;
+            }
+            if (node === range.endContainer && range.endOffset < endOffset) {
+                endOffset = range.endOffset;
+            }
+
+            if (startOffset >= endOffset) return;
+
+            const selectedText = node.splitText(startOffset);
+            selectedText.splitText(endOffset - startOffset);
+
+            const span = document.createElement('span');
+            span.classList.add('annotation', type === 'highlight' ? ANNOTATION_CLASSES.highlight : ANNOTATION_CLASSES.note);
+            span.dataset.type = type;
+            if (type === 'highlight') {
+                const allowedColors = ['yellow', 'green', 'pink'];
+                const safeColor = allowedColors.includes(highlightColor) ? highlightColor : 'yellow';
+                span.dataset.color = safeColor;
+                span.classList.add(`highlight-${safeColor}`);
+            }
+            if (type === 'note') {
+                const content = noteText || '';
+                span.dataset.note = content;
+                if (content) {
+                    span.setAttribute('data-note', content);
+                    span.title = content;
+                } else {
+                    span.removeAttribute('data-note');
+                    span.title = 'Note';
+                }
+            }
+            selectedText.parentNode.insertBefore(span, selectedText);
+            span.appendChild(selectedText);
+        }
+
+        function mergeAdjacentAnnotations() {
+            const annotations = document.querySelectorAll(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`);
+            annotations.forEach(span => {
+                if (!span.parentNode) return;
+                let cursor = span.nextSibling;
+                while (true) {
+                    const whitespaceBetween = [];
+                    while (cursor && cursor.nodeType === Node.TEXT_NODE && !cursor.textContent.trim()) {
+                        whitespaceBetween.push(cursor);
+                        cursor = cursor.nextSibling;
+                    }
+                    if (
+                        cursor &&
+                        cursor.nodeType === Node.ELEMENT_NODE &&
+                        cursor.classList.contains('annotation') &&
+                        cursor.dataset.type === span.dataset.type &&
+                        (span.dataset.type !== 'note' || (span.dataset.note || '') === (cursor.dataset.note || ''))
+                    ) {
+                        whitespaceBetween.forEach(node => span.appendChild(node));
+                        while (cursor.firstChild) {
+                            span.appendChild(cursor.firstChild);
+                        }
+                        const after = cursor.nextSibling;
+                        cursor.remove();
+                        cursor = after;
+                    } else {
+                        break;
+                    }
+                }
+                if (!span.textContent.trim()) {
+                    unwrapElement(span);
+                }
+            });
+        }
+
+        function handleTextSelection(event) {
+            const selection = window.getSelection();
+            if (!selection || selection.rangeCount === 0 || selection.isCollapsed || !selection.toString().trim()) {
+                return;
+            }
+            if (!selectionWithinPanels(selection)) {
+                return;
+            }
+            const range = selection.getRangeAt(0).cloneRange();
+            pendingSelectionRange = range;
+            activeAnnotationTarget = null;
+            showMenuForSelection(event);
+        }
+
+        function initializeContextMenu() {
+            const panels = [passagePanel, questionsPanel];
+            panels.forEach(panel => {
+                panel.addEventListener('mouseup', (e) => {
+                    setTimeout(() => handleTextSelection(e), 0);
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (contextMenu.contains(e.target)) return;
+                const annotation = e.target.closest(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`);
+                if (annotation) {
+                    showMenuForAnnotation(e, annotation);
+                    return;
+                }
+                closeContextMenu();
+            });
+        }
+
+        function applyAnnotation(type, noteText = '', highlightColor = 'yellow') {
+            const baseRange = pendingSelectionRange ? pendingSelectionRange.cloneRange() : getCurrentSelectionRange();
+            if (!baseRange || baseRange.collapsed || !isRangeInsidePanels(baseRange)) {
+                closeContextMenu(true);
+                return;
+            }
+
+            if (type === 'highlight') {
+                expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.highlight}`);
+            } else {
+                expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.note}`);
+            }
+
+            unwrapAnnotationsInRange(baseRange, type);
+            const targets = getTextNodesInRange(baseRange, type);
+            targets.forEach(node => wrapTextPortion(node, baseRange, type, noteText, highlightColor));
+            mergeAdjacentAnnotations();
+            closeContextMenu(true);
+        }
+
+        function highlightText(color = 'yellow') {
+            applyAnnotation('highlight', '', color);
+        }
+
+        function addNote() {
+            const note = prompt('Nhập nội dung ghi chú (Take note):');
+            if (note === null) {
+                closeContextMenu();
+                return;
+            }
+            applyAnnotation('note', note.trim());
+        }
+
+        function clearHighlight() {
+            if (activeAnnotationTarget) {
+                unwrapElement(activeAnnotationTarget);
+                mergeAdjacentAnnotations();
+            }
+            closeContextMenu(true);
+        }
+        
+        function clearAllHighlights() {
+            document.querySelectorAll(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`)
+                .forEach(unwrapElement);
+            mergeAdjacentAnnotations();
+            closeContextMenu(true);
+        }
+
+        function findQuestionAnchor(qNum) {
+            const mcqNumber = document.querySelector(`.mcq-question-number[data-q-number="${qNum}"]`);
+            if (mcqNumber) return mcqNumber;
+            const tfNumber = Array.from(document.querySelectorAll('.tf-question-number')).find(el => parseInt(el.textContent, 10) === qNum);
+            if (tfNumber) return tfNumber;
+            const strongLabel = Array.from(document.querySelectorAll(`label[for="q${qNum}"] strong`)).find(el => /^\d+$/.test(el.textContent.trim()));
+            if (strongLabel) return strongLabel;
+            const genericLabel = document.querySelector(`label[for="q${qNum}"]`);
+            if (genericLabel) return genericLabel;
+            const textInput = document.getElementById(`q${qNum}`);
+            if (textInput) return textInput;
+            return null;
+        }
+
+        function createMarkerButton(anchor, qNum) {
+            if (!anchor || anchor.closest('.question-number-with-mark') || anchor.closest('.markable-blank-wrapper')) return null;
+            const isInput = anchor.tagName === 'INPUT' || anchor.tagName === 'SELECT';
+            const isInlineBlank = isInput;
+
+            const wrapper = document.createElement('span');
+            wrapper.dataset.questionNumber = qNum;
+            const parent = anchor.parentNode;
+            if (!parent) return null;
+
+            if (isInlineBlank) {
+                wrapper.className = 'markable-blank-wrapper';
+                parent.insertBefore(wrapper, anchor);
+                wrapper.appendChild(anchor);
+            } else {
+                wrapper.className = 'question-number-with-mark';
+                const displayMode = window.getComputedStyle(anchor).display;
+                if (displayMode === 'block' || displayMode === 'flex') {
+                    wrapper.style.display = 'flex';
+                    wrapper.style.alignItems = 'center';
+                }
+                parent.insertBefore(wrapper, anchor);
+                wrapper.appendChild(anchor);
+            }
+
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = isInlineBlank ? 'mark-toggle-btn inside-blank' : 'mark-toggle-btn';
+            button.dataset.questionNumber = qNum;
+            button.setAttribute('aria-label', `Đánh dấu câu ${qNum}`);
+            button.innerHTML = bookmarkIcon;
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMark(qNum);
+            });
+            wrapper.appendChild(button);
+
+            const markHost = wrapper.closest('.tf-question, .matching-form-row, .matching-question-item, .question, .drag-drop-question, .summary-question, .paragraph-matching-question') || wrapper;
+            if(markHost) markHost.classList.add('markable-question');
+
+            markButtons.set(qNum, button);
+            return button;
+        }
+
+        function initializeQuestionMarkers() {
+            for (let i = 1; i <= totalQuestions; i++) {
+                const anchor = findQuestionAnchor(i);
+                createMarkerButton(anchor, i);
+            }
+        }
+
+        function toggleMark(qNum) {
+            const isMarked = markedQuestions.has(qNum);
+            if (isMarked) {
+                markedQuestions.delete(qNum);
+            } else {
+                markedQuestions.add(qNum);
+            }
+            updateMarkState(qNum, !isMarked);
+        }
+
+        function updateMarkState(qNum, marked) {
+            const btn = markButtons.get(qNum);
+            if (btn) {
+                btn.classList.toggle('marked', marked);
+                btn.setAttribute('aria-pressed', marked ? 'true' : 'false');
+            }
+            const navButton = Array.from(document.querySelectorAll('.subQuestion')).find(b => {
+                const hiddenSpan = b.querySelector('[aria-hidden="true"]');
+                const num = parseInt(hiddenSpan ? hiddenSpan.textContent : b.textContent.replace(/\D/g, ''), 10);
+                return num === qNum;
+            });
+            if (navButton) {
+                navButton.classList.toggle('marked', marked);
+            }
+        }
+
+        function updateAttemptedCount(part, startQ, endQ) {
+            let answeredCount = 0;
+            for (let i = startQ; i <= endQ; i++) {
+                if (isQuestionAnswered(i)) {
+                    answeredCount++;
+                }
+            }
+            const partHeader = document.querySelector(`.footer__questionNo___3WNct[onclick="switchToPart(${part})"]`);
+            if (partHeader) {
+                const countSpan = partHeader.querySelector('.attemptedCount');
+                if (countSpan) {
+                     countSpan.textContent = `${answeredCount} of ${endQ - startQ + 1}`;
+                }
+            }
+        }
+
+        window.nextQuestion = nextQuestion;
+        window.previousQuestion = previousQuestion;
+        window.goToQuestion = goToQuestion;
+        window.switchToPart = switchToPart;
+        window.closeResultsModal = closeResultsModal;
+        window.highlightText = highlightText;
+        window.addNote = addNote;
+        window.clearHighlight = clearHighlight;
+        window.clearAllHighlights = clearAllHighlights;
+    });
+    </script>
+</div>
+</body>
+</html>
